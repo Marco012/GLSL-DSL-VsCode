@@ -219,6 +219,11 @@ You can find the user-provided issues on [GitHub](https://github.com/racz16/WebG
 
 For more information, see the [changelog](CHANGELOG.md).
 
+### 1.3.9
+
+* Making compiler execution more robust
+* Other small changes and bugfixes
+
 ### 1.3.8
 
 * Making builtin macros available in normal code completion (with values), not only in preprocessor lines

@@ -1,6 +1,20 @@
 <!-- markdownlint-disable MD026 -->
 # Change Log
 
+## [1.3.9] - 2025.09.13.
+
+### Improved
+
+* Making compiler execution more robust
+* Updated packages
+* Other small updates
+
+### Fixed
+
+* Fixed the diagnostics on MacOS (ARM64)
+* Fixing hexadecimal integer literal syntax highlight
+* Other small fixes
+
 ## [1.3.8] - 2024.03.12.
 
 ### Improved
