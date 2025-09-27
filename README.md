@@ -342,7 +342,7 @@ For more information, see the [changelog](CHANGELOG.md).
 
 ## Contributions
 
-Special thanks to [michaelmcleodnz](https://github.com/michaelmcleodnz), [RAX7](https://github.com/RAX7), [Matt Curtis](https://github.com/matt-curtis), and [George Corney](https://github.com/haxiomic) for contributing.
+Special thanks to [michaelmcleodnz](https://github.com/michaelmcleodnz), [RAX7](https://github.com/RAX7), [Matt Curtis](https://github.com/matt-curtis), [George Corney](https://github.com/haxiomic), and [Liam Potter](https://github.com/evoactivity) for contributing.
 
 ## More information about the project
 
