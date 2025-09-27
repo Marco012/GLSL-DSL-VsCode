@@ -86,7 +86,8 @@
                 "scopeName": "source.js.injected.glsl",
                 "path": "./syntaxes/js-injected-glsl.language.json",
                 "injectTo": [
-                    "source.js"
+                    "source.js",
+                    "source.vue"
                 ]
             },
             {
@@ -94,7 +95,8 @@
                 "path": "./syntaxes/ts-injected-glsl.language.json",
                 "injectTo": [
                     "source.ts",
-                    "source.tsx"
+                    "source.tsx",
+                    "source.vue"
                 ]
             }
         ],
