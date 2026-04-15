@@ -4,8 +4,20 @@ options{
     tokenVocab = AntlrGlslLexer;
 }
 
-start : (function_prototype | function_definition | declaration_statement | SEMICOLON)*;
+start : (dsl_block | function_definition | declaration_statement | SEMICOLON)*;
 
+dsl_block 
+    : dsl_header (function_definition | declaration_statement | simple_statement)*
+    ;
+
+dsl_header
+    : PROPS_TAG 
+    | DATA_TAG 
+    | VERTEX_TAG 
+    | FRAGMENT_TAG 
+    | UNIFORMS_TAG
+    ;
+    
 /////
 //functions---------------------------------------------------------------------
 /////

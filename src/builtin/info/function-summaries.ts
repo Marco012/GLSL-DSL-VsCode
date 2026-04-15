@@ -5,6 +5,46 @@ export const functionSummaries = new Map<string, Array<IFunctionSummary>>([
         '100',
         [
             {
+                name: 'SPRITE_SIZE',
+                summary: 'Return the size of the specified sprite.',
+                parameters: [
+                    {
+                        name: 'sprite',
+                        summary: 'Specify the sprite whose size to return.',
+                    },
+                ],
+            },
+            {
+                name: 'SPRITE_OFFSET',
+                summary: 'Return the offset of the specified sprite.',
+                parameters: [
+                    {
+                        name: 'sprite',
+                        summary: 'Specify the sprite whose offset to return.',
+                    },
+                ],
+            },
+            {
+                name: 'SPRITE_TEX',
+                summary: 'Return the texture of the specified sprite.',
+                parameters: [
+                    {
+                        name: 'sprite',
+                        summary: 'Specify the sprite whose texture to return.',
+                    },
+                ],
+            },
+            {
+                name: 'apply_mvp',
+                summary: 'Apply the model-view-projection matrix to the specified position.',
+                parameters: [
+                    {
+                        name: 'position',
+                        summary: 'Specify the position to which to apply the matrix.',
+                    },
+                ],
+            },
+            {
                 name: 'acos',
                 summary: 'Return the arccosine of the parameter.',
                 parameters: [
@@ -2188,7 +2228,7 @@ export const functionSummaries = new Map<string, Array<IFunctionSummary>>([
                 ],
                 stage: 'fragment',
                 extension: 'GL_EXT_shader_texture_lod',
-            },
+            }
         ],
     ],
 ]);

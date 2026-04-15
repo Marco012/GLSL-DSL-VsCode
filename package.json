@@ -48,6 +48,26 @@
     "main": "./dist/extension-desktop.js",
     "browser": "./dist/extension-web.js",
     "contributes": {
+         "semanticTokenTypes": [
+    { "id": "type" },
+    { "id": "struct" },
+    { "id": "function" },
+    { "id": "variable" },
+    { "id": "macro" }
+  ],
+
+    "semanticTokenScopes": [
+    {
+      "scopes": {
+        "macro": [
+          "entity.name.namespace"
+        ]
+      }
+    }
+  ],
+
+
+
         "languages": [
             {
                 "id": "glsl",

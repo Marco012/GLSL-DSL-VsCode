@@ -1,5 +1,11 @@
 lexer grammar AntlrGlslLexer;
 
+PROPS_TAG: 'props:';
+DATA_TAG: 'data:';
+VERTEX_TAG: 'vertex:';
+FRAGMENT_TAG: 'fragment:';
+UNIFORMS_TAG: 'uniforms:';
+
 /////
 //keywords----------------------------------------------------------------------
 /////

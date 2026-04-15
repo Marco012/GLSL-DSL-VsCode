@@ -219,6 +219,18 @@ export class GlslDocumentFormattingProvider
         if (this.ctx.lastt1TokenIndex === Constants.INVALID || this.ctx.inlineStruct) {
             return false;
         }
+
+        const isCustomTag = (type: number) => 
+        type === AntlrGlslLexer.PROPS_TAG || 
+        type === AntlrGlslLexer.DATA_TAG || 
+        type === AntlrGlslLexer.VERTEX_TAG || 
+        type === AntlrGlslLexer.FRAGMENT_TAG || 
+        type === AntlrGlslLexer.UNIFORMS_TAG;
+
+        if (isCustomTag(t1.type) || isCustomTag(t2.type)) {
+            return true;
+        }
+
         return (
             (this.ctx.functionParameters &&
                 (t1.type === AntlrGlslLexer.COMMA ||
@@ -473,9 +485,33 @@ export class GlslDocumentFormattingProvider
     }
 
     private getDepth(t2: Token): number {
+        const isCustomTag = (type: number) => 
+        type === AntlrGlslLexer.PROPS_TAG || 
+        type === AntlrGlslLexer.DATA_TAG || 
+        type === AntlrGlslLexer.VERTEX_TAG || 
+        type === AntlrGlslLexer.FRAGMENT_TAG || 
+        type === AntlrGlslLexer.UNIFORMS_TAG;
+
+        if (isCustomTag(t2.type)) {
+            return 0; 
+        }
+
         const offsetIncrement = t2.type === AntlrGlslLexer.LCB ? 0 : 1;
         const position = this.di.offsetToPosition(t2.stopIndex - this.di.getInjectionOffset() + offsetIncrement);
-        const depth = this.di.getDepthAt(position);
+        let depth = this.di.getDepthAt(position);
+
+        for (let i = this.ctx.currentTokenIndex; i >= 0; i--) {
+            const type = this.tokens[i].type;
+            if (type === AntlrGlslLexer.PROPS_TAG || 
+                type === AntlrGlslLexer.DATA_TAG || 
+                type === AntlrGlslLexer.VERTEX_TAG || 
+                type === AntlrGlslLexer.FRAGMENT_TAG || 
+                type === AntlrGlslLexer.UNIFORMS_TAG) {
+                depth += 1; // Increase indent because we are "inside" a section
+                break;
+            }
+        }
+
         let increment = this.ctx.scopelessInterfaceBlock ? 1 : 0;
         if (t2.type === AntlrGlslLexer.LCB) {
             for (const pos of this.di.getRegions().scopedCurlyBracePositions) {

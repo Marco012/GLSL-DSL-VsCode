@@ -16,6 +16,10 @@
             "end": "$"
         },
         {
+            "name": "keyword.operator.glsl",
+            "match": "^\\s*(props|data|vertex|fragment|uniforms):"
+        },
+        {
             "comment": "PREPROCESSOR",
             "name": "meta.preprocessor.glsl",
             "match": "#.*?($|(?=(\\/\\/|\\/\\*)))"

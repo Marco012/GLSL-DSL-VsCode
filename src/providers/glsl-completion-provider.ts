@@ -10,6 +10,7 @@ import {
     MarkdownString,
     Position,
     ProviderResult,
+    SnippetString,
     TextDocument,
 } from 'vscode';
 import { AntlrGlslLexer } from '../_generated/AntlrGlslLexer';
@@ -329,6 +330,13 @@ export class GlslCompletionProvider implements CompletionItemProvider {
         return true;
     }
 
+    private addInternalEngineTypes(): void {
+        const spriteItem = new CompletionItem('Sprite', CompletionItemKind.Struct);
+        spriteItem.detail = 'Engine Type';
+        spriteItem.documentation = new MarkdownString('Opaque handle representing a Sprite resource.');
+        this.items.push(spriteItem);
+    }
+
     //
     //builtin items
     //
@@ -336,6 +344,7 @@ export class GlslCompletionProvider implements CompletionItemProvider {
         this.addKeywordItems();
         this.addQualifiers();
         this.addPreprocessorGlobal();
+        this.addInternalEngineTypes();
     }
 
     private addBuiltinItems(localItems: Array<CompletionItem>): void {

@@ -17,6 +17,7 @@ export enum SemanticType {
     BUILTIN_TYPE = 'struct',
     FUNCTION = 'function',
     VARIABLE = 'variable',
+    MACRO = 'macro'
 }
 
 export enum SemanticModifier {

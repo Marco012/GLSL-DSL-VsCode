@@ -10,7 +10,7 @@ import {
 } from 'vscode';
 import { DocumentInfo } from '../core/document-info';
 import { GlslEditor } from '../core/glsl-editor';
-import { SemanticRegion } from '../scope/regions/semantic-region';
+import { SemanticRegion, SemanticType } from '../scope/regions/semantic-region';
 
 export class GlslDocumentSemanticTokensProvider implements DocumentSemanticTokensProvider {
     private di: DocumentInfo;
@@ -40,10 +40,20 @@ export class GlslDocumentSemanticTokensProvider implements DocumentSemanticToken
             const p1 = this.di.offsetToPosition(sr.token.startIndex - this.di.getInjectionOffset());
             const p2 = this.di.offsetToPosition(sr.token.stopIndex - this.di.getInjectionOffset() + 1);
             const range = new Range(p1, p2);
-            this.result.push(range, sr.type, sr.modifiers);
+
+            const text = sr.token.text;
+            const internalMacros = ['SPRITE_SIZE', 'SPRITE_OFFSET', 'SPRITE_TEX'];
+
+            let tokenType = sr.type;
+            if (internalMacros.includes(text)) {
+                tokenType = SemanticType.MACRO;
+            }
+
+            this.result.push(range, tokenType, sr.modifiers);
         }
     }
 }
+
 
 export class GlslSemanticTokensLegend implements SemanticTokensLegend {
     public readonly tokenTypes = [
@@ -51,6 +61,7 @@ export class GlslSemanticTokensLegend implements SemanticTokensLegend {
         'struct', //builtin type
         'function',
         'variable',
+        'macro'
     ];
     public readonly tokenModifiers = ['declaration', 'definition', 'readonly'];
 }

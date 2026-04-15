@@ -5,6 +5,46 @@ export const functions = new Map<string, IFunction[]>([
         '100',
         [
             {
+                returnType: 'ivec2',
+                name: 'SPRITE_SIZE',
+                parameters: [
+                    {
+                        type: 'Sprite',
+                        name: 'sprite',
+                    },
+                ],
+            },
+            {
+                returnType: 'ivec2',
+                name: 'SPRITE_OFFSET',
+                parameters: [
+                    {
+                        type: 'Sprite',
+                        name: 'sprite',
+                    },
+                ],
+            },
+            {
+                returnType: 'sampler2D',
+                name: 'SPRITE_TEX',
+                parameters: [
+                    {
+                        type: 'Sprite',
+                        name: 'sprite',
+                    },
+                ],
+            },
+            {
+                returnType: 'vec4',
+                name: 'apply_mvp',
+                parameters: [
+                    {
+                        type: 'vec3',
+                        name: 'position',
+                    },
+                ],
+            },
+            {
                 returnType: 'genType',
                 name: 'acos',
                 parameters: [
@@ -4719,7 +4759,7 @@ export const functions = new Map<string, IFunction[]>([
                 ],
                 stage: 'fragment',
                 extension: 'GL_EXT_shader_texture_lod',
-            },
+            }
         ],
     ],
 ]);
